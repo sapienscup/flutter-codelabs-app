@@ -24,7 +24,7 @@ class Ammah extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: [
-          const Locale('pt'), // Brazil
+          const Locale('pt', 'BR'), // Brazil
           const Locale('en'), // English
           const Locale('es'), // Spanish
         ],
@@ -207,22 +207,25 @@ class MenstrualCycleCalendar extends StatelessWidget {
           elevation: 10,
           child: Localizations.override(
               context: context,
-              locale: const Locale('pt'),
-              // Using a Builder to get the correct BuildContext.
-              // Alternatively, you can create a new widget and Localizations.override
-              // will pass the updated BuildContext to the new widget.
+              locale: const Locale('pt', 'BR'),
               child: Builder(
                 builder: (context) {
-                  return SfDateRangePicker(
-                    showTodayButton: true,
-                    initialSelectedDates: [appState.start, appState.end],
-                    minDate: DateTime(2023, 1, 1),
-                    maxDate: DateTime.now().add(const Duration(days: 5000)),
-                    selectionMode: DateRangePickerSelectionMode.range,
-                    onSelectionChanged: (value) {
-                      appState.changeStateBasedOnDateClicked(
-                          value.value.startDate, value.value.endDate);
-                    },
+                  return Column(
+                    children: [
+                      Text("Seu ciclo menstrual",
+                          style: TextStyle(color: Colors.black38)),
+                      SfDateRangePicker(
+                        showTodayButton: true,
+                        initialSelectedDates: [appState.start, appState.end],
+                        minDate: DateTime(2023, 1, 1),
+                        maxDate: DateTime.now().add(const Duration(days: 5000)),
+                        selectionMode: DateRangePickerSelectionMode.range,
+                        onSelectionChanged: (value) {
+                          appState.changeStateBasedOnDateClicked(
+                              value.value.startDate, value.value.endDate);
+                        },
+                      ),
+                    ],
                   );
                 },
               ))),

@@ -39,8 +39,10 @@ flutter:
   uses-material-design: true
   generate: true
   assets:
-    - assets/utero.png
-    - assets/women.png
+    - assets/woman-1.png
+    - assets/woman-1-small.png
+    - assets/woman-2.png
+    - assets/woman-3.png
     - l10n/app_en.arb
     - l10n/app_es.arb
     - l10n/app_pt.arb

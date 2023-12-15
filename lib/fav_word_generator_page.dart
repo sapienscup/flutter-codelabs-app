@@ -3,6 +3,8 @@ import 'package:flutter_application_1/big_card.dart';
 import 'package:english_words/english_words.dart';
 
 class FavWordGeneratorPage extends StatefulWidget {
+  FavWordGeneratorPage({super.key});
+
   @override
   State<FavWordGeneratorPage> createState() => _FavWordGeneratorPageState();
 }
@@ -13,6 +15,7 @@ class _FavWordGeneratorPageState extends State<FavWordGeneratorPage> {
 
   void getNext() {
     current = WordPair.random();
+    print(current);
   }
 
   bool alreadyFavority() {

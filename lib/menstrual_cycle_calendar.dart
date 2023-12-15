@@ -18,6 +18,10 @@ class _MenstrualCycleCalendarState extends State<MenstrualCycleCalendar> {
     end = incDate;
   }
 
+  void onDateChanged(DateTime dt) {
+    print(dt.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(

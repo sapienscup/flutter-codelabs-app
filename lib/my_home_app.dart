@@ -14,9 +14,6 @@ class MyHomeApp extends StatefulWidget {
 
 class _MyHomeApp extends State<MyHomeApp> {
   var selectedIndex = 0;
-  void onDateChanged(DateTime dt) {
-    print(dt.toString());
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +21,7 @@ class _MyHomeApp extends State<MyHomeApp> {
 
     switch (selectedIndex) {
       case 0:
-        page = FavWordGeneratorPage();
+        page = RandomIdeiaGenerator();
         break;
       case 1:
         page = MenstrualCycleCalendar();
@@ -74,17 +71,6 @@ class _MyHomeApp extends State<MyHomeApp> {
                 ],
               )));
     });
-  }
-
-  List<Widget> homePage(MyAppState appState, int selectedIndex) {
-    switch (selectedIndex) {
-      case 0:
-        return [RandomIdeiaGenerator()];
-      case 1:
-        return [MenstrualCycleCalendar()];
-      default:
-        return [];
-    }
   }
 
   BoxDecoration womenDecorationBoxTop() {

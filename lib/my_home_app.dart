@@ -46,7 +46,6 @@ class _MyHomeApp extends State<MyHomeApp> {
                     groupAlignment: 1,
                     elevation: Constants.elevation,
                     extended: constraints.maxWidth >= 600,
-                    labelType: NavigationRailLabelType.all,
                     destinations: [
                       NavigationRailDestination(
                           icon: Icon(Icons.bloodtype), label: Text("Período")),

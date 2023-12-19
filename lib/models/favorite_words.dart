@@ -4,76 +4,72 @@ import 'package:flutter_application_1/fav_word_list_item.dart';
 import 'package:flutter_application_1/models/base_model.dart';
 
 class FavoriteWords extends BaseModel {
-  List<WordPair> wordsGenerated = [];
-  List<WordPair> favorites = [];
+  List<FavoriteWordItem> ideas = [];
   WordPair current = WordPair.random();
-  List<ListItem> items = [];
 
   void getNext() {
     current = WordPair.random();
 
-    wordsGenerated.add(current);
-    items.add(FavoriteWordItem(
-        '${current.first} ${current.second.toUpperCase()}', false));
+    ideas.add(FavoriteWordItem(current, false));
   }
 
   bool contains() {
-    return favorites.contains(current);
+    return ideas.contains(FavoriteWordItem(current, true));
   }
 
-  bool alreadyFavorite() {
-    return favorites.contains(current);
+  ListView buildFavorites(bool showActions) {
+    return ListView.builder(
+      itemCount: ideas.length,
+      itemBuilder: (context, index) {
+        final item = ideas[index];
+        if (item.isFavorite) {
+          return ListTile(
+            title: item.render(context, showActions),
+          );
+        }
+      },
+    );
   }
 
   ListView buildList(bool showActions) {
     return ListView.builder(
-      // Let the ListView know how many items it needs to build.
-      itemCount: items.length,
-      // Provide a builder function. This is where the magic happens.
-      // Convert each item into a widget based on the type of item it is.
+      itemCount: ideas.length,
       itemBuilder: (context, index) {
-        final item = items[index];
-
+        final item = ideas[index];
         return ListTile(
-          title: item.buildFavoriteWord(context, showActions),
+          title: item.render(context, showActions),
         );
       },
     );
   }
 
   void removeFavorite() {
-    favorites.remove(current);
-
-    var toBeRemoved = FavoriteWordItem(
-        '${current.first} ${current.second.toUpperCase()}', true);
+    var toBeRemoved = FavoriteWordItem(current, true);
     var foundItem;
 
-    for (var item in items) {
+    for (var item in ideas) {
       if (item.isEqual(toBeRemoved)) {
         foundItem = item;
       }
     }
-    items.remove(foundItem);
+
+    ideas.remove(foundItem);
   }
 
   void unFavorite() {
-    var toBeRemoved = FavoriteWordItem(
-        '${current.first} ${current.second.toUpperCase()}', true);
-    for (var item in items) {
-      if (item.isEqual(toBeRemoved)) {
+    var aux = FavoriteWordItem(current, true);
+    for (var item in ideas) {
+      if (item.isEqual(aux)) {
         item.setIsFavorite(false);
       }
     }
   }
 
   void toggleFavorite() {
-    if (favorites.contains(current)) {
-      favorites.remove(current);
+    if (ideas.contains(FavoriteWordItem(current, true))) {
       unFavorite();
     } else {
-      favorites.add(current);
-      items.add(FavoriteWordItem(
-          '${current.first} ${current.second.toUpperCase()}', true));
+      ideas.add(FavoriteWordItem(current, true));
     }
   }
 }

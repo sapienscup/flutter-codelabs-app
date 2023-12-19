@@ -23,18 +23,22 @@ class _RandomIdeiaGeneratorState extends State<RandomIdeiaGenerator> {
             builder: (BuildContext context, BoxConstraints constraints) {
           return Row(
             children: <Widget>[
-              SizedBox(
-                  height: 200,
-                  width: constraints.maxWidth - 10,
-                  child: Scrollbar(
-                    radius: Radius.circular(20),
-                    thickness: 5,
-                    thumbVisibility: true,
-                    child: widget.favoriteWords.buildList(false),
-                  ))
+              Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: SizedBox(
+                    height: 200,
+                    width: constraints.maxWidth / 2,
+                    child: Scrollbar(
+                      radius: Radius.circular(20),
+                      thickness: 5,
+                      thumbVisibility: true,
+                      child: widget.favoriteWords.buildList(false),
+                    )),
+              )
             ],
           );
         }),
+        SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -55,7 +59,7 @@ class _RandomIdeiaGeneratorState extends State<RandomIdeiaGenerator> {
                 child: Row(
                   children: [
                     Icon(
-                      widget.favoriteWords.alreadyFavorite()
+                      widget.favoriteWords.contains()
                           ? Icons.favorite
                           : Icons.favorite_outline,
                       color: Colors.pink,

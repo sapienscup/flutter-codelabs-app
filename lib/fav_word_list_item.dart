@@ -1,55 +1,48 @@
+import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
-abstract class ListItem {
-  Widget buildFavoriteWord(BuildContext context, bool showActions);
+class FavoriteWordItem {
+  FavoriteWordItem(this.favoriteWord, this.isFavorite);
 
-  bool isEqual(FavoriteWordItem toBeRemoved);
+  bool isFavorite;
 
-  void setIsFavorite(bool value);
-}
+  final WordPair favoriteWord;
 
-class FavoriteWordItem implements ListItem {
-  FavoriteWordItem(this.favoriteWord, this._isFavorite);
-
-  bool _isFavorite;
-
-  bool get isFavorite => _isFavorite;
-
-  set isFavorite(bool value) {
-    _isFavorite = value;
-  }
-
-  final String favoriteWord;
-
-  @override
   bool isEqual(FavoriteWordItem other) {
     return favoriteWord == other.favoriteWord;
   }
 
-  @override
   void setIsFavorite(bool value) {
     isFavorite = value;
   }
 
-  @override
-  Widget buildFavoriteWord(BuildContext context, bool showActions) {
-    var components = [
-      Icon(
-        isFavorite ? Icons.favorite : Icons.favorite_outline,
-        color: Colors.white,
-        size: 14.0,
-        semanticLabel: 'Favoritar',
-      ),
-      SizedBox(width: 5),
+  Widget render(BuildContext context, bool showActions) {
+    var icon = Icon(
+      Icons.favorite,
+      color: Colors.white,
+      size: 14.0,
+      semanticLabel: 'Favoritar',
+    );
+
+    var components = <Widget>[];
+
+    if (isFavorite) {
+      components.addAll([
+        icon,
+        SizedBox(width: 5),
+      ]);
+    }
+
+    components.addAll([
       Text(
-        favoriteWord.toLowerCase(),
-        style: TextStyle(color: Colors.white54, fontSize: 14),
+        "${favoriteWord.first.toLowerCase()} ${favoriteWord.second.toLowerCase()}",
+        style: TextStyle(color: Colors.lime, fontSize: 14),
       ),
-    ];
+    ]);
 
     if (showActions) {
       components.addAll([
-        SizedBox(width: 5),
+        SizedBox(width: 1),
         IconButton(
             onPressed: () => {},
             icon: Icon(

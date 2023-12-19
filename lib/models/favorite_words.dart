@@ -5,6 +5,7 @@ import 'package:flutter_application_1/models/base_model.dart';
 
 class FavoriteWords extends BaseModel {
   List<FavoriteWordItem> ideas = [];
+  List<FavoriteWordItem> favorites = [];
   WordPair current = WordPair.random();
 
   void getNext() {
@@ -19,9 +20,9 @@ class FavoriteWords extends BaseModel {
 
   ListView buildFavorites() {
     return ListView.builder(
-      itemCount: ideas.length,
+      itemCount: favorites.length,
       itemBuilder: (context, index) {
-        final item = ideas[index];
+        final item = favorites[index];
         return ListTile(
           title: item.renderAdmin(context),
         );
@@ -57,6 +58,8 @@ class FavoriteWords extends BaseModel {
         item.setIsFavorite(true);
       }
     }
+
+    favorites.add(FavoriteWordItem(current, true));
   }
 
   void toggleFavorite() {

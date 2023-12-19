@@ -23,7 +23,7 @@ class FavoriteWords extends BaseModel {
       itemBuilder: (context, index) {
         final item = ideas[index];
         return ListTile(
-          title: item.render(context, true),
+          title: item.renderAdmin(context),
         );
       },
     );
@@ -35,7 +35,7 @@ class FavoriteWords extends BaseModel {
       itemBuilder: (context, index) {
         final item = ideas[index];
         return ListTile(
-          title: item.render(context, false),
+          title: item.render(context),
         );
       },
     );
@@ -61,7 +61,7 @@ class FavoriteWords extends BaseModel {
 
   void toggleFavorite() {
     if (ideas.isEmpty) {
-      ideas.add(FavoriteWordItem(current, false));
+      ideas.add(FavoriteWordItem(current, true));
       return;
     }
 

@@ -12,7 +12,42 @@ class FavoriteWordItem {
     isFavorite = value;
   }
 
-  Widget render(BuildContext context, bool showActions) {
+  Widget renderAdmin(BuildContext context) {
+    var icon = Icon(
+      Icons.favorite,
+      color: Colors.white,
+      size: 14.0,
+      semanticLabel: 'Favoritar',
+    );
+
+    var components = <Widget>[
+      Container(
+          width: 200,
+          child: Row(children: [
+            icon,
+            SizedBox(
+              width: 15,
+            ),
+            Text(
+              "${favoriteWord.first.toLowerCase()} ${favoriteWord.second.toLowerCase()}",
+              style: TextStyle(color: Colors.lime, fontSize: 14),
+            ),
+          ])),
+      IconButton(
+          onPressed: () => {},
+          icon: Icon(
+            Icons.delete,
+            color: Colors.white,
+            size: 14.0,
+            semanticLabel: 'Favoritar',
+          ))
+    ];
+
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround, children: components);
+  }
+
+  Widget render(BuildContext context) {
     var icon = Icon(
       Icons.favorite,
       color: Colors.white,
@@ -35,20 +70,6 @@ class FavoriteWordItem {
         style: TextStyle(color: Colors.lime, fontSize: 14),
       ),
     ]);
-
-    if (showActions) {
-      components.addAll([
-        SizedBox(width: 1),
-        IconButton(
-            onPressed: () => {},
-            icon: Icon(
-              Icons.delete,
-              color: Colors.white,
-              size: 14.0,
-              semanticLabel: 'Favoritar',
-            ))
-      ]);
-    }
 
     return Row(
       children: components,

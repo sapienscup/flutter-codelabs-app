@@ -23,15 +23,22 @@ class MaterialDesignAppInstance extends StatelessWidget {
       localeListResolutionCallback: (locales, supportedLocales) =>
           const Locale('pt', 'BR'),
       title: 'Ammah',
-      theme: ThemeData(
-        fontFamily: 'Montserrat',
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.pink.shade400,
-            background: Colors.pink.shade400,
-            primary: Colors.pink.shade400),
-      ),
+      theme: buildTheme(),
       home: MyHomeApp(),
+    );
+  }
+
+  ThemeData buildTheme() {
+    return ThemeData(
+      fontFamily: 'Montserrat',
+      useMaterial3: true,
+      scrollbarTheme: ScrollbarThemeData().copyWith(
+        thumbColor: MaterialStateProperty.all(Colors.pink.shade100),
+      ),
+      colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.pink.shade400,
+          background: Colors.pink.shade400,
+          primary: Colors.pink.shade400),
     );
   }
 }

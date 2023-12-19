@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants.dart';
-import 'package:flutter_application_1/fav_word_generator_page.dart';
+import 'package:flutter_application_1/fav_words.dart';
 import 'package:flutter_application_1/menstrual_cycle_calendar.dart';
-import 'package:flutter_application_1/my_app_state.dart';
+import 'package:flutter_application_1/models/favorite_words.dart';
 import 'package:flutter_application_1/random_ideia_generator.dart';
 
 class MyHomeApp extends StatefulWidget {
@@ -14,6 +14,11 @@ class MyHomeApp extends StatefulWidget {
 
 class _MyHomeApp extends State<MyHomeApp> {
   var selectedIndex = 0;
+  FavoriteWords favoriteWords = FavoriteWords();
+
+  refresh() {
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +26,23 @@ class _MyHomeApp extends State<MyHomeApp> {
 
     switch (selectedIndex) {
       case 0:
-        page = RandomIdeiaGenerator();
+        page = RandomIdeiaGenerator(
+            favoriteWords: favoriteWords, notifyParent: refresh);
         break;
       case 1:
-        page = MenstrualCycleCalendar();
+        page = FavoriteWordsAdmin(favoriteWords: favoriteWords);
         break;
       case 2:
+        page = MenstrualCycleCalendar();
+        break;
+      case 3:
         page = Placeholder(
-          color: Colors.amber,
+          color: Colors.purpleAccent,
+        );
+        break;
+      case 4:
+        page = Placeholder(
+          color: Colors.blueAccent,
         );
         break;
       default:
@@ -48,6 +62,10 @@ class _MyHomeApp extends State<MyHomeApp> {
                     extended: constraints.maxWidth >= 600,
                     destinations: [
                       NavigationRailDestination(
+                          icon: Icon(Icons.lightbulb), label: Text("Ideas")),
+                      NavigationRailDestination(
+                          icon: Icon(Icons.favorite), label: Text("Favorites")),
+                      NavigationRailDestination(
                           icon: Icon(Icons.bloodtype), label: Text("Período")),
                       NavigationRailDestination(
                           icon: Icon(Icons.settings), label: Text("Configs")),
@@ -64,7 +82,7 @@ class _MyHomeApp extends State<MyHomeApp> {
                   ),
                   Expanded(
                       child: Container(
-                    decoration: womenDecorationBoxTop(),
+                    decoration: womanAppModelDecorativeBackground(),
                     child: page,
                   ))
                 ],
@@ -72,7 +90,7 @@ class _MyHomeApp extends State<MyHomeApp> {
     });
   }
 
-  BoxDecoration womenDecorationBoxTop() {
+  BoxDecoration womanAppModelDecorativeBackground() {
     return BoxDecoration(
       image: DecorationImage(
           image: AssetImage("assets/woman-1-small.png"),

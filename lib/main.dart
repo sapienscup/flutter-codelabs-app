@@ -27,8 +27,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => MyAppState(),
-      child: MaterialDesignAppInstance(),
-    );
+        create: (context) => MyAppState(),
+        child: Consumer<MyAppState>(builder: (context, localeProvider, child) {
+          return MaterialDesignAppInstance();
+        }));
   }
 }

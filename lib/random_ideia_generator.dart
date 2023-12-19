@@ -1,51 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/big_card.dart';
-import 'package:english_words/english_words.dart';
+import 'package:flutter_application_1/models/favorite_words.dart';
 
 class RandomIdeiaGenerator extends StatefulWidget {
-  RandomIdeiaGenerator({super.key});
+  RandomIdeiaGenerator(
+      {super.key, required this.favoriteWords, required this.notifyParent});
+
+  final Function() notifyParent;
+  final FavoriteWords favoriteWords;
 
   @override
   State<RandomIdeiaGenerator> createState() => _RandomIdeiaGeneratorState();
 }
 
 class _RandomIdeiaGeneratorState extends State<RandomIdeiaGenerator> {
-  List<WordPair> favorites = [];
-  var current = WordPair.random();
-
-  void getNext() {
-    current = WordPair.random();
-    print(current);
-  }
-
-  bool alreadyFavority() {
-    return favorites.contains(current);
-  }
-
-  void toggleFavorite() {
-    if (favorites.contains(current)) {
-      favorites.remove(current);
-    } else {
-      favorites.add(current);
-    }
-  }
-
-  refresh() {
-    setState(() {
-      print('oi');
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+          return Row(
+            children: <Widget>[
+              SizedBox(
+                  height: 200,
+                  width: constraints.maxWidth - 10,
+                  child: Scrollbar(
+                    radius: Radius.circular(20),
+                    thickness: 5,
+                    thumbVisibility: true,
+                    child: widget.favoriteWords.buildList(false),
+                  ))
+            ],
+          );
+        }),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             BigCard(
-              pair: current,
+              pair: widget.favoriteWords.current,
             ),
           ],
         ),
@@ -54,11 +48,14 @@ class _RandomIdeiaGeneratorState extends State<RandomIdeiaGenerator> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-                onPressed: () => {toggleFavorite()},
+                onPressed: () {
+                  widget.favoriteWords.toggleFavorite();
+                  widget.notifyParent();
+                },
                 child: Row(
                   children: [
                     Icon(
-                      alreadyFavority()
+                      widget.favoriteWords.alreadyFavorite()
                           ? Icons.favorite
                           : Icons.favorite_outline,
                       color: Colors.pink,
@@ -73,7 +70,8 @@ class _RandomIdeiaGeneratorState extends State<RandomIdeiaGenerator> {
             SizedBox(width: 10),
             ElevatedButton(
               onPressed: () {
-                getNext();
+                widget.favoriteWords.getNext();
+                widget.notifyParent();
               },
               child: Text(
                 'Próxima',

@@ -2,24 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter_application_1/constants.dart';
 
-class BigCard extends StatefulWidget {
+class BigCard extends StatelessWidget {
   BigCard({
     super.key,
     required this.pair,
   });
 
-  WordPair pair;
+  final WordPair pair;
 
-  @override
-  State<BigCard> createState() => _BigCardState();
-}
-
-class _BigCardState extends State<BigCard> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final style = theme.textTheme.displayMedium!.copyWith(
-      fontSize: 28,
+    final style1 = theme.textTheme.displaySmall!.copyWith(
+      color: theme.colorScheme.onPrimary,
+    );
+    final style2 = theme.textTheme.displayMedium!.copyWith(
+      fontWeight: FontWeight.bold,
       color: theme.colorScheme.onPrimary,
     );
 
@@ -31,7 +29,18 @@ class _BigCardState extends State<BigCard> {
             color: theme.colorScheme.primary,
             child: Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Text(widget.pair.asCamelCase, style: style),
+              child: Column(children: [
+                Text(
+                  pair.first.toLowerCase(),
+                  style: style1,
+                  semanticsLabel: "${pair.first} ${pair.second.toUpperCase()}",
+                ),
+                Text(
+                  pair.second.toUpperCase(),
+                  style: style2,
+                  semanticsLabel: "${pair.first} ${pair.second.toUpperCase()}",
+                )
+              ]),
             ))
       ],
     );

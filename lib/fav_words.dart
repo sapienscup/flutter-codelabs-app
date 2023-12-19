@@ -15,6 +15,6 @@ class _FavoriteWordsAdminState extends State<FavoriteWordsAdmin> {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(5),
-        child: widget.favoriteWords.buildFavorites(true));
+        child: widget.favoriteWords.buildFavorites());
   }
 }

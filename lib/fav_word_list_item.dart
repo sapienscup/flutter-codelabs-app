@@ -8,15 +8,6 @@ class FavoriteWordItem {
 
   final WordPair favoriteWord;
 
-  @override
-  bool operator ==(Object other) {
-    if (other is FavoriteWordItem) {
-      return favoriteWord == other.favoriteWord;
-    } else {
-      return false;
-    }
-  }
-
   void setIsFavorite(bool value) {
     isFavorite = value;
   }
@@ -63,4 +54,20 @@ class FavoriteWordItem {
       children: components,
     );
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (other is FavoriteWordItem) {
+      return (favoriteWord == other.favoriteWord) &&
+          (isFavorite == other.isFavorite);
+    } else {
+      return false;
+    }
+  }
+
+  @override
+  int get hashCode => (favoriteWord.first.hashCode.toString() +
+          favoriteWord.hashCode.toString() +
+          isFavorite.toString())
+      .hashCode;
 }

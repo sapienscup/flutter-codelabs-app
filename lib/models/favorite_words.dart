@@ -17,27 +17,25 @@ class FavoriteWords extends BaseModel {
     return ideas.contains(FavoriteWordItem(current, true));
   }
 
-  ListView buildFavorites(bool showActions) {
-    return ListView.builder(
-      itemCount: ideas.length,
-      itemBuilder: (context, index) {
-        final item = ideas[index];
-        if (item.isFavorite) {
-          return ListTile(
-            title: item.render(context, showActions),
-          );
-        }
-      },
-    );
-  }
-
-  ListView buildList(bool showActions) {
+  ListView buildFavorites() {
     return ListView.builder(
       itemCount: ideas.length,
       itemBuilder: (context, index) {
         final item = ideas[index];
         return ListTile(
-          title: item.render(context, showActions),
+          title: item.render(context, true),
+        );
+      },
+    );
+  }
+
+  ListView buildIdeas() {
+    return ListView.builder(
+      itemCount: ideas.length,
+      itemBuilder: (context, index) {
+        final item = ideas[index];
+        return ListTile(
+          title: item.render(context, false),
         );
       },
     );
@@ -52,11 +50,25 @@ class FavoriteWords extends BaseModel {
     }
   }
 
+  void favorite() {
+    var aux = FavoriteWordItem(current, false);
+    for (var item in ideas) {
+      if (item == aux) {
+        item.setIsFavorite(true);
+      }
+    }
+  }
+
   void toggleFavorite() {
+    if (ideas.isEmpty) {
+      ideas.add(FavoriteWordItem(current, false));
+      return;
+    }
+
     if (ideas.contains(FavoriteWordItem(current, true))) {
       unfavorite();
     } else {
-      ideas.add(FavoriteWordItem(current, true));
+      favorite();
     }
   }
 }

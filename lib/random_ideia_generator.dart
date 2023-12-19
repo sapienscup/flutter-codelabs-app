@@ -23,18 +23,15 @@ class _RandomIdeiaGeneratorState extends State<RandomIdeiaGenerator> {
             builder: (BuildContext context, BoxConstraints constraints) {
           return Row(
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: SizedBox(
-                    height: 200,
-                    width: constraints.maxWidth / 2,
-                    child: Scrollbar(
-                      radius: Radius.circular(20),
-                      thickness: 5,
-                      thumbVisibility: true,
-                      child: widget.favoriteWords.buildList(false),
-                    )),
-              )
+              SizedBox(
+                  height: 200,
+                  width: constraints.maxWidth,
+                  child: Scrollbar(
+                    radius: Radius.circular(20),
+                    thickness: 5,
+                    thumbVisibility: true,
+                    child: widget.favoriteWords.buildIdeas(),
+                  )),
             ],
           );
         }),

@@ -43,23 +43,10 @@ class FavoriteWords extends BaseModel {
     );
   }
 
-  void removeFavorite() {
-    var toBeRemoved = FavoriteWordItem(current, true);
-    var foundItem;
-
-    for (var item in ideas) {
-      if (item.isEqual(toBeRemoved)) {
-        foundItem = item;
-      }
-    }
-
-    ideas.remove(foundItem);
-  }
-
-  void unFavorite() {
+  void unfavorite() {
     var aux = FavoriteWordItem(current, true);
     for (var item in ideas) {
-      if (item.isEqual(aux)) {
+      if (item == aux) {
         item.setIsFavorite(false);
       }
     }
@@ -67,7 +54,7 @@ class FavoriteWords extends BaseModel {
 
   void toggleFavorite() {
     if (ideas.contains(FavoriteWordItem(current, true))) {
-      unFavorite();
+      unfavorite();
     } else {
       ideas.add(FavoriteWordItem(current, true));
     }

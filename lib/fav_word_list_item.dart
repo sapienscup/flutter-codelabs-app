@@ -8,8 +8,13 @@ class FavoriteWordItem {
 
   final WordPair favoriteWord;
 
-  bool isEqual(FavoriteWordItem other) {
-    return favoriteWord == other.favoriteWord;
+  @override
+  bool operator ==(Object other) {
+    if (other is FavoriteWordItem) {
+      return favoriteWord == other.favoriteWord;
+    } else {
+      return false;
+    }
   }
 
   void setIsFavorite(bool value) {

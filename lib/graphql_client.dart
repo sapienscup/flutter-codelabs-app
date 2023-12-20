@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 class EldenRingApi {
-  Future<ValueNotifier<GraphQLClient>> init() async {
-    await initHiveForFlutter();
-
+  ValueNotifier<GraphQLClient> init() {
     final HttpLink httpLink = HttpLink(
       'https://eldenring.fanapis.com/api/graphql',
     );

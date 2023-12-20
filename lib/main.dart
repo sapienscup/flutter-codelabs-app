@@ -7,7 +7,9 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
-  var client = await EldenRingApi().init();
+  await initHiveForFlutter();
+
+  var client = EldenRingApi().init();
 
   var app = GraphQLProvider(
     client: client,

@@ -22,7 +22,7 @@ class MaterialDesignAppInstance extends StatelessWidget {
       ],
       localeListResolutionCallback: (locales, supportedLocales) =>
           const Locale('pt', 'BR'),
-      title: 'Ammah',
+      title: 'Elden Ring Characters',
       theme: buildTheme(),
       home: MyHomeApp(),
     );

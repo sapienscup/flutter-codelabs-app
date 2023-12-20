@@ -5,11 +5,11 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(Ammah());
+  runApp(AppStartingPoint());
 }
 
-class Ammah extends StatelessWidget {
-  const Ammah({super.key});
+class AppStartingPoint extends StatelessWidget {
+  const AppStartingPoint({super.key});
 
   @override
   Widget build(BuildContext context) {

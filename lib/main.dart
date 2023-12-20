@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/graphql_client.dart';
 import 'package:flutter_application_1/material_design_app_instance.dart';
 import 'package:flutter_application_1/my_app_state.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(AppStartingPoint());
+void main() async {
+  var client = await EldenRingApi().init();
+
+  var app = GraphQLProvider(
+    client: client,
+    child: AppStartingPoint(),
+  );
+
+  runApp(app);
 }
 
 class AppStartingPoint extends StatelessWidget {

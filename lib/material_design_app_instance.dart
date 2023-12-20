@@ -36,9 +36,9 @@ class MaterialDesignAppInstance extends StatelessWidget {
         thumbColor: MaterialStateProperty.all(Colors.pink.shade100),
       ),
       colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.pink.shade400,
-          background: Colors.pink.shade400,
-          primary: Colors.pink.shade400),
+          seedColor: Colors.yellow.shade800,
+          background: Colors.yellow.shade800,
+          primary: Colors.yellow.shade800),
     );
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants.dart';
 import 'package:flutter_application_1/fav_words.dart';
-import 'package:flutter_application_1/menstrual_cycle_calendar.dart';
 import 'package:flutter_application_1/models/favorite_words.dart';
 import 'package:flutter_application_1/random_ideia_generator.dart';
 
@@ -33,14 +32,11 @@ class _MyHomeApp extends State<MyHomeApp> {
         page = FavoriteWordsAdmin(favoriteWords: favoriteWords);
         break;
       case 2:
-        page = MenstrualCycleCalendar();
-        break;
-      case 3:
         page = Placeholder(
           color: Colors.purpleAccent,
         );
         break;
-      case 4:
+      case 3:
         page = Placeholder(
           color: Colors.blueAccent,
         );
@@ -62,16 +58,15 @@ class _MyHomeApp extends State<MyHomeApp> {
                     extended: constraints.maxWidth >= 600,
                     destinations: [
                       NavigationRailDestination(
-                          icon: Icon(Icons.lightbulb), label: Text("Ideas")),
+                          icon: Icon(Icons.read_more), label: Text("Ideas")),
                       NavigationRailDestination(
-                          icon: Icon(Icons.favorite), label: Text("Favorites")),
+                          icon: Icon(Icons.ac_unit_outlined),
+                          label: Text("Favorites")),
                       NavigationRailDestination(
-                          icon: Icon(Icons.bloodtype), label: Text("Período")),
+                          icon: Icon(Icons.access_time_outlined),
+                          label: Text("Período")),
                       NavigationRailDestination(
                           icon: Icon(Icons.settings), label: Text("Configs")),
-                      NavigationRailDestination(
-                          icon: Icon(Icons.connect_without_contact),
-                          label: Text("Conexões"))
                     ],
                     selectedIndex: selectedIndex,
                     onDestinationSelected: (int index) {

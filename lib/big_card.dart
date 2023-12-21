@@ -28,7 +28,7 @@ class BigCard extends StatelessWidget {
             elevation: Constants.elevation,
             color: theme.colorScheme.primary,
             child: Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 3),
               child: Column(children: [
                 Text(
                   pair.first.toLowerCase(),

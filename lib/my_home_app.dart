@@ -96,7 +96,7 @@ class _MyHomeApp extends State<TheHomeApp> {
     return BoxDecoration(
       image: DecorationImage(
           image: AssetImage("assets/casting.gif"),
-          opacity: 0.7,
+          opacity: Constants.opacity,
           alignment: Alignment.bottomRight),
     );
   }

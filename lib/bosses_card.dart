@@ -27,16 +27,16 @@ class BossesDisplayList extends StatelessWidget {
           return const Text('Loading');
         }
 
-        List? repositories = result.data?['boss'];
+        List? items = result.data?['boss'];
 
-        if (repositories == null) {
+        if (items == null) {
           return const Text('No repositories');
         }
 
         return ListView.builder(
-            itemCount: repositories.length,
+            itemCount: items.length,
             itemBuilder: (context, index) {
-              final repository = repositories[index];
+              final repository = items[index];
 
               List<Widget> children = [
                 Text(repository['name'] ?? ''),

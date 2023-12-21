@@ -5,14 +5,14 @@ import 'package:flutter_application_1/fav_words.dart';
 import 'package:flutter_application_1/models/favorite_words.dart';
 import 'package:flutter_application_1/random_ideia_generator.dart';
 
-class MyHomeApp extends StatefulWidget {
-  const MyHomeApp({super.key});
+class TheHomeApp extends StatefulWidget {
+  const TheHomeApp({super.key});
 
   @override
-  State<MyHomeApp> createState() => _MyHomeApp();
+  State<TheHomeApp> createState() => _MyHomeApp();
 }
 
-class _MyHomeApp extends State<MyHomeApp> {
+class _MyHomeApp extends State<TheHomeApp> {
   var selectedIndex = 0;
   FavoriteWords favoriteWords = FavoriteWords();
 

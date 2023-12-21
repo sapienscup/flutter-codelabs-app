@@ -25,7 +25,7 @@ class MaterialDesignAppInstance extends StatelessWidget {
           const Locale('pt', 'BR'),
       title: 'Elden Ring Characters',
       theme: buildTheme(),
-      home: MyHomeApp(),
+      home: TheHomeApp(),
     );
   }
 
@@ -37,9 +37,9 @@ class MaterialDesignAppInstance extends StatelessWidget {
         thumbColor: MaterialStateProperty.all(Colors.pink.shade100),
       ),
       colorScheme: ColorScheme.fromSeed(
-          seedColor: Color.fromARGB(255, 97, 55, 236),
-          background: Color.fromARGB(255, 83, 152, 255),
-          primary: Color.fromARGB(255, 71, 83, 241)),
+          seedColor: Constants.seedColor,
+          background: Constants.backgroundColor,
+          primary: Constants.primary),
     );
   }
 }

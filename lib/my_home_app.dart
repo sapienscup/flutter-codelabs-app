@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/bosses_card.dart';
 import 'package:flutter_application_1/constants.dart';
 import 'package:flutter_application_1/fav_words.dart';
 import 'package:flutter_application_1/models/favorite_words.dart';
@@ -32,9 +33,7 @@ class _MyHomeApp extends State<MyHomeApp> {
         page = FavoriteWordsAdmin(favoriteWords: favoriteWords);
         break;
       case 2:
-        page = Placeholder(
-          color: Colors.purpleAccent,
-        );
+        page = BossesDisplayList();
         break;
       case 3:
         page = Placeholder(

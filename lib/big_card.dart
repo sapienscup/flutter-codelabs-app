@@ -14,10 +14,12 @@ class BigCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final style1 = theme.textTheme.displaySmall!.copyWith(
+      fontSize: 8,
       color: theme.colorScheme.onPrimary,
     );
     final style2 = theme.textTheme.displayMedium!.copyWith(
       fontWeight: FontWeight.bold,
+      fontSize: 8,
       color: theme.colorScheme.onPrimary,
     );
 

@@ -40,14 +40,22 @@ class BossesDisplayList extends StatelessWidget {
 
               List<Widget> children = [
                 Text(repository['name'] ?? ''),
+                SizedBox(
+                  height: 20,
+                ),
                 Text(repository['description'] ?? ''),
               ];
 
               if (repository['image'] != null) {
-                children.add(Image.network(
-                  repository['image'],
-                  height: 200,
-                ));
+                children.add(
+                  ClipRect(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    child: Image.network(
+                      repository['image'],
+                      height: 200,
+                    ),
+                  ),
+                );
               }
 
               return Padding(
@@ -57,6 +65,7 @@ class BossesDisplayList extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: children,
                     ),
                   ),

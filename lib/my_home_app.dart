@@ -46,7 +46,8 @@ class _MyHomeApp extends State<MyHomeApp> {
 
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
-          body: SafeArea(
+          body: page,
+          drawer: SafeArea(
               bottom: true,
               right: true,
               child: Row(
@@ -57,7 +58,15 @@ class _MyHomeApp extends State<MyHomeApp> {
                     extended: constraints.maxWidth >= 600,
                     destinations: [
                       NavigationRailDestination(
-                          icon: Icon(Icons.read_more), label: Text("Ideas")),
+                        icon: Icon(Icons.read_more),
+                        label: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 24),
+                          child: RotatedBox(
+                            quarterTurns: -1,
+                            child: Text("Ideias"),
+                          ),
+                        ),
+                      ),
                       NavigationRailDestination(
                           icon: Icon(Icons.ac_unit_outlined),
                           label: Text("Favorites")),
@@ -77,8 +86,7 @@ class _MyHomeApp extends State<MyHomeApp> {
                   Expanded(
                       child: Container(
                     decoration: womanAppModelDecorativeBackground(),
-                    child: page,
-                  ))
+                  )),
                 ],
               )));
     });

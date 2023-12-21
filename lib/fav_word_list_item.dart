@@ -67,7 +67,7 @@ class FavoriteWordItem {
     components.addAll([
       Text(
         "${favoriteWord.first.toLowerCase()} ${favoriteWord.second.toLowerCase()}",
-        style: TextStyle(color: Colors.lime, fontSize: 14),
+        style: TextStyle(fontSize: 14),
       ),
     ]);
 

@@ -7,6 +7,4 @@ class Account extends BaseModel {
   late String email;
   @required
   late String password;
-  @required
-  late MenstrualCycleCalendar mcc;
 }

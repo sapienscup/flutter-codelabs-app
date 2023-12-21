@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants.dart';
 import 'package:flutter_application_1/my_home_app.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -36,9 +37,9 @@ class MaterialDesignAppInstance extends StatelessWidget {
         thumbColor: MaterialStateProperty.all(Colors.pink.shade100),
       ),
       colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue.shade800,
-          background: Colors.blue.shade800,
-          primary: Colors.blue.shade800),
+          seedColor: Constants.MAIN_COLOR_APP,
+          background: Constants.MAIN_COLOR_APP,
+          primary: Constants.MAIN_COLOR_APP),
     );
   }
 }

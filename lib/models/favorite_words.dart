@@ -22,7 +22,8 @@ class FavoriteWords extends BaseModel {
     return ListView.builder(
       itemCount: favorites.length,
       itemBuilder: (context, index) {
-        final item = favorites[index];
+        String key = favorites.keys.elementAt(index);
+        final item = favorites[key];
         return ListTile(
           title: item?.renderAdmin(context),
         );

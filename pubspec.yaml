@@ -42,6 +42,7 @@ flutter:
   generate: true
   assets:
     - assets/elden-1.png
+    - assets/casting.gif
     - l10n/app_en.arb
     - l10n/app_es.arb
     - l10n/app_pt.arb

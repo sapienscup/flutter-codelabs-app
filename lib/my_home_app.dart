@@ -95,7 +95,7 @@ class _MyHomeApp extends State<MyHomeApp> {
   BoxDecoration womanAppModelDecorativeBackground() {
     return BoxDecoration(
       image: DecorationImage(
-          image: AssetImage("assets/elden-1.png"),
+          image: AssetImage("assets/casting.gif"),
           opacity: 0.7,
           alignment: Alignment.bottomRight),
     );

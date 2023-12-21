@@ -67,6 +67,8 @@ class FavoriteWords extends BaseModel {
   void toggleFavorite() {
     if (ideas.isEmpty) {
       ideas.add(FavoriteWordItem(current, true));
+      favorites["${current.first}.${current.second}"] =
+          FavoriteWordItem(current, true);
       return;
     }
 

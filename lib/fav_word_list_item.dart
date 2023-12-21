@@ -30,7 +30,7 @@ class FavoriteWordItem {
             ),
             Text(
               "${favoriteWord.first.toLowerCase()} ${favoriteWord.second.toLowerCase()}",
-              style: TextStyle(color: Colors.lime, fontSize: 14),
+              style: TextStyle(fontSize: 14),
             ),
           ])),
       IconButton(

@@ -14,12 +14,12 @@ class BigCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final style1 = theme.textTheme.displaySmall!.copyWith(
-      fontSize: 8,
+      fontSize: 22,
       color: theme.colorScheme.onPrimary,
     );
     final style2 = theme.textTheme.displayMedium!.copyWith(
       fontWeight: FontWeight.bold,
-      fontSize: 8,
+      fontSize: 22,
       color: theme.colorScheme.onPrimary,
     );
 
@@ -30,7 +30,7 @@ class BigCard extends StatelessWidget {
             elevation: Constants.elevation,
             color: theme.colorScheme.primary,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 3),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
               child: Column(children: [
                 Text(
                   pair.first.toLowerCase(),

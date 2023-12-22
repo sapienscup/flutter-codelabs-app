@@ -53,7 +53,7 @@ class _MyHomeApp extends State<TheHomeApp> {
               child: Row(
                 children: [
                   NavigationRail(
-                    groupAlignment: 1,
+                    groupAlignment: 0,
                     elevation: Constants.elevation,
                     extended: constraints.maxWidth >= 600,
                     destinations: [

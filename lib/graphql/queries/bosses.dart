@@ -9,6 +9,7 @@ query EldenRingBosses(\$limit: Int!, \$page: Int!) {
     image
     description
     location
+    drops
     healthPoints
   }
 }

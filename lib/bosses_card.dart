@@ -146,7 +146,7 @@ class _BossesDisplayListState extends State<BossesDisplayList> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: beforePage,
+                  onPressed: () => setState(() => beforePage()),
                   child: Wrap(
                     children: <Widget>[
                       Icon(
@@ -161,7 +161,7 @@ class _BossesDisplayListState extends State<BossesDisplayList> {
                   width: 50,
                 ),
                 ElevatedButton(
-                  onPressed: nextPage,
+                  onPressed: () => setState(() => nextPage()),
                   child: Wrap(
                     children: <Widget>[
                       Icon(
